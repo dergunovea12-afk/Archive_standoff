@@ -36,8 +36,11 @@
             --accent-purple: #7928ca;
             --accent-cyan: #50e3c2;
             --accent-green: #17c964;
+            --accent-orange: #ff6b35;
+            --accent-red: #ff375f;
             --border-color: #333333;
             --gradient: linear-gradient(135deg, #0070f3, #7928ca);
+            --gradient-orange: linear-gradient(135deg, #ff6b35, #ff375f);
         }
 
         body {
@@ -119,6 +122,28 @@
         .btn-success:hover {
             background: #13a452;
             border-color: #13a452;
+        }
+
+        .btn-donate {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .btn-donate:hover {
+            background: #e62e4f;
+            border-color: #e62e4f;
+            transform: translateY(-1px);
+        }
+
+        .btn-youtube {
+            background: #ff0000;
+            border-color: #ff0000;
+        }
+
+        .btn-youtube:hover {
+            background: #cc0000;
+            border-color: #cc0000;
+            transform: translateY(-1px);
         }
 
         .btn-group {
@@ -251,6 +276,46 @@
             letter-spacing: 0.5px;
         }
 
+        /* Support Section */
+        .support {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 48px 32px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .support-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .support-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .support-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .support-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
         /* Survey Section */
         .survey {
             background: var(--bg-secondary);
@@ -318,6 +383,25 @@
         .footer-text {
             color: var(--text-tertiary);
             font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
         }
 
         /* Responsive */
@@ -339,6 +423,11 @@
             }
             
             .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .support-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -365,6 +454,22 @@
         .fade-in {
             animation: fadeIn 0.6s ease-out;
         }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body>
@@ -378,6 +483,12 @@
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.78 5.42-.9 6.8-.06.67-.36.89-.89.56-2.45-1.83-3.57-2.98-5.79-4.78-.54-.45-.92-.68-.89-1.07.03-.38.42-.55.98-.4 3.95 1.34 6.31 2.27 9.11 3.51.47.2.84.1.96-.44.23-1.04.9-4.08 1.1-5.28.08-.5-.17-.74-.64-.6-2.49.8-6.37 2.02-8.8 2.68-.45.12-.86.18-1.26.18z"/>
                     </svg>
                     Перейти в Telegram
+                </a>
+                <a href="#support" class="btn btn-donate">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13V7h2v8h-2zm4 0V7h2v8h-2z"/>
+                    </svg>
+                    Поддержать автора
                 </a>
                 <a href="#survey" class="btn btn-success">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -430,6 +541,30 @@
                         <h3 class="card-title">Для сообщества</h3>
                         <p class="card-description">Создан фанатами для фанатов. Открыт для всех участников сообщества</p>
                     </div>
+                </div>
+            </section>
+
+            <!-- Support Section -->
+            <section id="support" class="support fade-in">
+                <div class="support-icon pulse">❤️</div>
+                <h2 class="support-title">Поддержите создателя</h2>
+                <p class="support-description">
+                    Этот проект создаётся и развивается на энтузиазме. Если вам нравится архив и вы хотите поддержать 
+                    дальнейшее развитие проекта, вы можете сделать это через DonationAlerts. Любая помощь мотивирует продолжать работу!
+                </p>
+                <div class="support-buttons">
+                    <a href="https://www.donationalerts.com/r/zeusikshop" class="btn btn-donate" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13V7h2v8h-2zm4 0V7h2v8h-2z"/>
+                        </svg>
+                        Поддержать на DonationAlerts
+                    </a>
+                    <a href="https://www.youtube.com/@Zeusoffc" class="btn btn-youtube" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.67 8.12C19.58 7.73 19.38 7.38 19.08 7.11C18.78 6.84 18.41 6.66 18 6.6C16.62 6.46 14.81 6.4 12 6.4C9.19 6.4 7.38 6.46 6 6.6C5.59 6.66 5.22 6.84 4.92 7.11C4.62 7.38 4.42 7.73 4.33 8.12C4.17 8.9 4.09 9.82 4.05 10.84C4.02 11.86 4 12.93 4 14C4 15.07 4.02 16.14 4.05 17.16C4.09 18.18 4.17 19.1 4.33 19.88C4.42 20.27 4.62 20.62 4.92 20.89C5.22 21.16 5.59 21.34 6 21.4C7.38 21.54 9.19 21.6 12 21.6C14.81 21.6 16.62 21.54 18 21.4C18.41 21.34 18.78 21.16 19.08 20.89C19.38 20.62 19.58 20.27 19.67 19.88C19.83 19.1 19.91 18.18 19.95 17.16C19.98 16.14 20 15.07 20 14C20 12.93 19.98 11.86 19.95 10.84C19.91 9.82 19.83 8.9 19.67 8.12ZM10 15.5V9.5L15 12.5L10 15.5Z"/>
+                        </svg>
+                        YouTube канал
+                    </a>
                 </div>
             </section>
 
@@ -495,6 +630,12 @@
                 Archive Standoff 2 © 2025 | Фанатский некоммерческий проект<br>
                 Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD
             </p>
+            <div class="footer-links">
+                <a href="https://t.me/archive_standoff2" class="footer-link" target="_blank">Telegram</a>
+                <a href="https://www.donationalerts.com/r/zeusikshop" class="footer-link" target="_blank">Поддержать проект</a>
+                <a href="https://www.youtube.com/@Zeusoffc" class="footer-link" target="_blank">YouTube</a>
+                <a href="#survey" class="footer-link">Опрос</a>
+            </div>
         </div>
     </footer>
 
@@ -525,11 +666,16 @@
             });
         });
 
-        // Smooth scroll for survey link
-        document.querySelector('a[href="#survey"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#survey').scrollIntoView({
-                behavior: 'smooth'
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
