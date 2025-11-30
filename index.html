@@ -3,200 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive Standoff 2 - Фанатский архив</title>
+    <title>Archive Standoff 2</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-tertiary: #666666;
+            --accent-blue: #0070f3;
+            --accent-purple: #7928ca;
+            --accent-cyan: #50e3c2;
+            --border-color: #333333;
+            --gradient: linear-gradient(135deg, #0070f3, #7928ca);
         }
-        
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         .header {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 40px;
-            margin-bottom: 30px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 0;
             text-align: center;
         }
-        
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #f0f6fc;
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
         }
-        
-        .description {
-            font-size: 1.2em;
-            color: #7d8590;
-            margin-bottom: 25px;
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
         }
-        
-        .tg-button {
-            display: inline-block;
-            background: #0088cc;
-            color: white;
-            padding: 15px 30px;
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background 0.3s;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
         }
-        
-        .tg-button:hover {
-            background: #0077b5;
+
+        .btn:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-1px);
         }
-        
-        .content {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 20px;
+
+        .btn-primary {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
         }
-        
-        h2 {
-            color: #f0f6fc;
-            margin: 25px 0 15px 0;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
+
+        .btn-primary:hover {
+            background: #0050b3;
+            border-color: #0050b3;
         }
-        
-        h2:first-child {
-            margin-top: 0;
+
+        /* Main Content */
+        .main {
+            padding: 80px 0;
         }
-        
-        ul {
-            margin: 15px 0 15px 25px;
-            color: #7d8590;
+
+        .section {
+            margin-bottom: 80px;
         }
-        
-        li {
-            margin-bottom: 8px;
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+            text-align: center;
         }
-        
-        .notice {
-            background: #1f2937;
-            border-left: 4px solid #2f81f7;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
         }
-        
-        .notice-warning {
-            border-left-color: #d29922;
-            background: #332c1f;
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
         }
-        
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
+            gap: 32px;
+            margin: 60px 0;
         }
-        
-        .stat-item {
-            background: #1f2937;
-            padding: 20px;
-            border-radius: 8px;
+
+        .stat {
             text-align: center;
-            border: 1px solid #30363d;
+            padding: 24px;
         }
-        
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Legal Notice */
+        .legal-notice {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .legal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .legal-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
         .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
             text-align: center;
-            margin-top: 40px;
-            color: #7d8590;
-            font-size: 0.9em;
         }
-        
+
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
+            .logo {
+                font-size: 2.5rem;
             }
             
-            .header {
-                padding: 25px 15px;
+            .section-title {
+                font-size: 1.75rem;
             }
             
-            h1 {
-                font-size: 2em;
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏴‍☠️ Archive Standoff 2</h1>
-        <p class="description">Фанатский архив материалов и ресурсов для игры Standoff 2</p>
-        <a href="https://t.me/archive_standoff2" class="tg-button" target="_blank">
-            📢 Перейти в Telegram-канал
-        </a>
-    </div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Archive Standoff 2</div>
+            <p class="tagline">Фанатский архив материалов Standoff 2</p>
+            <a href="https://t.me/archive_standoff2" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.78 5.42-.9 6.8-.06.67-.36.89-.89.56-2.45-1.83-3.57-2.98-5.79-4.78-.54-.45-.92-.68-.89-1.07.03-.38.42-.55.98-.4 3.95 1.34 6.31 2.27 9.11 3.51.47.2.84.1.96-.44.23-1.04.9-4.08 1.1-5.28.08-.5-.17-.74-.64-.6-2.49.8-6.37 2.02-8.8 2.68-.45.12-.86.18-1.26.18z"/>
+                </svg>
+                Перейти в Telegram
+            </a>
+        </div>
+    </header>
 
-    <div class="content">
-        <h2>🎯 О проекте</h2>
-        <p>Archive Standoff 2 — это некоммерческий фанатский проект, созданный для сохранения истории и материалов мобильного шутера Standoff 2. Наш канал служит цифровым архивом для различных материалов игры.</p>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <strong>📁 Материалы</strong><br>
-                50+ файлов
+    <main class="main">
+        <div class="container">
+            <!-- Stats Section -->
+            <div class="stats fade-in">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Материалов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">14+</div>
+                    <div class="stat-label">Подписчиков</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Доступ</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Бесплатно</div>
+                </div>
             </div>
-            <div class="stat-item">
-                <strong>👥 Сообщество</strong><br>
-                14+ подписчиков
-            </div>
-            <div class="stat-item">
-                <strong>🕒 Активность</strong><br>
-                Ежедневно
+
+            <!-- About Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">О проекте</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">🏴‍☠️</div>
+                        <h3 class="card-title">Фанатский архив</h3>
+                        <p class="card-description">Некоммерческий проект для сохранения истории и материалов игры Standoff 2</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📁</div>
+                        <h3 class="card-title">Цифровая библиотека</h3>
+                        <p class="card-description">Архив редких и удалённых материалов, текстур, файлов игры</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title">Для сообщества</h3>
+                        <p class="card-description">Создан фанатами для фанатов. Открыт для всех участников сообщества</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">Что мы сохраняем</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🎮</div>
+                        <h3 class="feature-title">Архивные версии</h3>
+                        <p class="feature-description">Старые версии игры и обновлений</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🖼️</div>
+                        <h3 class="feature-title">Текстуры и ресурсы</h3>
+                        <p class="feature-description">Графические материалы и ассеты</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📚</div>
+                        <h3 class="feature-title">Документация</h3>
+                        <p class="feature-description">Исторические данные и информация</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Фанатские работы</h3>
+                        <p class="feature-description">Контент созданный сообществом</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legal Notice -->
+            <div class="legal-notice fade-in">
+                <h3 class="legal-title">Правовой статус</h3>
+                <p class="legal-text">
+                    Все права на используемые игровые материалы принадлежат компании <strong>AXLEBOLT LTD</strong>. 
+                    Данный проект не претендует на владение материалами и создан исключительно в некоммерческих целях 
+                    как фан-проект, выражающий уважение к оригинальной игре Standoff 2.
+                </p>
             </div>
         </div>
-        
-        <h2>📂 Что мы сохраняем</h2>
-        <ul>
-            <li>Архивные версии игры</li>
-            <li>Удалённые материалы и текстуры</li>
-            <li>Исторические данные об обновлениях</li>
-            <li>Фанатские работы сообщества</li>
-            <li>Редкие и эксклюзивные файлы</li>
-        </ul>
-        
-        <h2>🛡️ Правовой статус</h2>
-        <div class="notice notice-warning">
-            <strong>Юридическое уведомление:</strong> Все права на используемые игровые материалы принадлежат компании AXLEBOLT LTD. Данный проект не претендует на владение материалами и создан исключительно в некоммерческих целях как фан-проект, выражающий уважение к оригинальной игре Standoff 2.
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Archive Standoff 2 © 2024 | Фанатский некоммерческий проект<br>
+                Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD
+            </p>
         </div>
-        
-        <h2>🌟 Наша миссия</h2>
-        <p>Мы сохраняем историю Standoff 2 для будущих поколений игроков. Наш архив служит:</p>
-        <ul>
-            <li>Цифровым музеем развития игры</li>
-            <li>Ресурсом для исследователей и фанатов</li>
-            <li>Площадкой для сохранения уникальных материалов</li>
-            <li>Сообществом единомышленников</li>
-        </ul>
-    </div>
+    </footer>
 
-    <div class="content">
-        <h2>🔗 Связь с нами</h2>
-        <p>Telegram: <a href="https://t.me/archive_standoff2" style="color: #2f81f7;">@archive_standoff2</a></p>
-        <p>По вопросам сотрудничества и добавления материалов - пишите в Telegram!</p>
-    </div>
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    <div class="footer">
-        <p>Archive Standoff 2 © 2024 | Фанатский некоммерческий проект</p>
-        <p>Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD</p>
-    </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(20px)";
+                el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
-              </html>
+</html>
