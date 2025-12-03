@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Частые вопросы | Archive Standoff 2</title>
+    <meta name="description" content="Ответы на часто задаваемые вопросы о проекте Archive Standoff 2">
+    <style>
+        /* Общие стили из main.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-tertiary: #666666;
+            --accent-blue: #0070f3;
+            --accent-purple: #7928ca;
+            --accent-cyan: #50e3c2;
+            --accent-green: #17c964;
+            --accent-orange: #ff6b35;
+            --accent-red: #ff375f;
+            --border-color: #333333;
+            --gradient: linear-gradient(135deg, #0070f3, #7928ca);
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Навигация */
+        .main-nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Шапка страницы */
+        .page-header {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ стили */
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+
+        .faq-category {
+            margin-bottom: 48px;
+        }
+
+        .faq-category h2 {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .faq-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 24px 24px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Быстрые ссылки */
+        .faq-quick-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 32px 0 48px;
+        }
+
+        .quick-link {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        /* Футер */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .faq-question {
+                padding: 18px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="forum.html">Форум</a></li>
+                <li><a href="https://t.me/archive_standoff2">Telegram</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Шапка -->
+        <section class="page-header">
+            <h1>Часто задаваемые вопросы</h1>
+            <p>Ответы на популярные вопросы о проекте</p>
+        </section>
+
+        <!-- Быстрые ссылки -->
+        <div class="faq-quick-links">
+            <a href="#general" class="quick-link">Общие вопросы</a>
+            <a href="#materials" class="quick-link">Материалы</a>
+            <a href="#support" class="quick-link">Поддержка</a>
+            <a href="#legal" class="quick-link">Правовые вопросы</a>
+        </div>
+
+        <!-- FAQ контент -->
+        <div class="faq-section">
+            <!-- Общие вопросы -->
+            <div class="faq-category" id="general">
+                <h2>📋 Общие вопросы</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Что такое Archive Standoff 2?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Это фанатский некоммерческий проект, созданный для сохранения истории игры Standoff 2. 
+                        Мы собираем и архивируем старые версии игры, удалённый контент, текстуры и другие материалы.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Кто стоит за этим проектом?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Проект создан и поддерживается энтузиастами и фанатами Standoff 2. Основной разработчик — 
+                        Zeus1k (@Zeus1k1337 в Telegram).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Это официальный проект от AXLEBOLT?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Нет, это полностью независимый фанатский проект. Мы не имеем отношения к компании AXLEBOLT LTD 
+                        и не претендуем на право собственности на игровые материалы.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Как часто обновляется архив?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Архив пополняется регулярно по мере обнаружения новых материалов. Крупные обновления 
+                        происходят несколько раз в месяц. Следите за новостями в нашем Telegram-канале.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Материалы -->
+            <div class="faq-category" id="materials">
+                <h2>📁 Материалы и доступ</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Какие материалы есть в архиве?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        В архиве собраны: старые версии игры (APK), удалённые текстуры и скины, звуки, 
+                        интерфейсы, промо-материалы, концепт-арты, а также документация и патчноуты.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Как получить доступ к материалам?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Основной доступ через наш Telegram-канал и бота. Некоторые материалы также доступны 
+                        для прямого скачивания с сайта.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Можно ли предложить свои материалы?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Да! Мы принимаем материалы от сообщества. Свяжитесь с нами через Telegram 
+                        (@Zeus1k1337) или напишите на почту (если есть).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Материалы бесплатны?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Да, все материалы распространяются абсолютно бесплатно. Проект существует 
+                        на энтузиазме и добровольных пожертвованиях.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Поддержка -->
+            <div class="faq-category" id="support">
+                <h2>❤️ Поддержка проекта</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Как я могу поддержать проект?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Вы можете: 1) Поддерживать финансово через DonationAlerts, 2) Помогать материалами, 
+                        3) Рассказывать о проекте, 4) Участвовать в развитии (код, дизайн, контент).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        На что идут пожертвования?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Средства идут на: хостинг файлов, домен, разработку новых функций, приобретение редких 
+                        материалов, а также на кофе для разработчика ☕
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Можно ли помочь без денег?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Конечно! Помощь материалами, тестирование, предложения по улучшению, переводы, 
+                        модерация сообщества — всё это ценно для нас.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правовые вопросы -->
+            <div class="faq-category" id="legal">
+                <h2>⚖️ Правовые вопросы</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Это законно?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Проект создан в рамках добросовестного использования (fair use) для некоммерческих 
+                        образовательных и исторических целей. Мы не нарушаем авторские права, а сохраняем 
+                        историю игры.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Могут ли быть проблемы с AXLEBOLT?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Мы уважаем права правообладателей и готовы к диалогу. Проект не конкурирует с 
+                        оригинальной игрой, а дополняет её историю.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Можно ли использовать материалы для модов?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Материалы предоставляются "как есть" для ознакомления. Их использование в модах 
+                        или других проектах — на ваше усмотрение и риск.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Archive Standoff 2 © 2025 | Фанатский некоммерческий проект<br>
+                Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD
+            </p>
+            <div class="footer-links">
+                <a href="faq.html" class="footer-link">FAQ</a>
+                <a href="contacts.html" class="footer-link">Контакты</a>
+                <a href="https://t.me/archive_standoff2" class="footer-link" target="_blank">Telegram</a>
+                <a href="https://www.donationalerts.com/r/zeusikshop" class="footer-link" target="_blank">Поддержать</a>
+                <a href="https://www.youtube.com/@Zeusoffc" class="footer-link" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анимация FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('.quick-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Открыть первый FAQ по умолчанию
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstFaq = document.querySelector('.faq-item');
+            if (firstFaq) {
+                firstFaq.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Archive Standoff 2</title>
+    <meta name="description" content="Свяжитесь с создателем проекта Archive Standoff 2">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-tertiary: #666666;
+            --accent-blue: #0070f3;
+            --accent-purple: #7928ca;
+            --accent-cyan: #50e3c2;
+            --accent-green: #17c964;
+            --accent-orange: #ff6b35;
+            --accent-red: #ff375f;
+            --border-color: #333333;
+            --gradient: linear-gradient(135deg, #0070f3, #7928ca);
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Навигация */
+        .main-nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Шапка страницы */
+        .page-header {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Контакты */
+        .contacts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 60px 0 100px;
+        }
+
+        @media (max-width: 768px) {
+            .contacts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Левая колонка - информация */
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--accent-cyan);
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-method:hover {
+            border-color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+
+        .method-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .method-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .method-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Правая колонка - форма */
+        .contact-form-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0050b3;
+        }
+
+        .form-notice {
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Частые вопросы */
+        .quick-questions {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .quick-questions h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .question-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .question-btn {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .question-btn:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        /* Футер */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="forum.html">Форум</a></li>
+                <li><a href="https://t.me/archive_standoff2">Telegram</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Шапка -->
+        <section class="page-header">
+            <h1>Контакты</h1>
+            <p>Свяжитесь с создателем проекта или присоединяйтесь к сообществу</p>
+        </section>
+
+        <!-- Основной контент -->
+        <div class="contacts-container">
+            <!-- Левая колонка - контакты -->
+            <div class="contact-info">
+                <h2>Связь с создателем</h2>
+                <p>
+                    Есть вопросы, предложения или хотите поделиться материалами? 
+                    Я всегда открыт для общения и сотрудничества.
+                </p>
+
+                <div class="contact-methods">
+                    <!-- Telegram -->
+                    <a href="https://t.me/Zeus1k1337" class="contact-method" target="_blank">
+                        <div class="method-icon">📱</div>
+                        <div class="method-content">
+                            <h3>Telegram (личный)</h3>
+                            <p>@Zeus1k1337 — прямое общение с создателем</p>
+                        </div>
+                    </a>
+
+                    <!-- Telegram канал -->
+                    <a href="https://t.me/archive_standoff2" class="contact-method" target="_blank">
+                        <div class="method-icon">📢</div>
+                        <div class="method-content">
+                            <h3>Telegram-канал проекта</h3>
+                            <p>Основные новости и обновления архива</p>
+                        </div>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@Zeusoffc" class="contact-method" target="_blank">
+                        <div class="method-icon">🎥</div>
+                        <div class="method-content">
+                            <h3>YouTube канал</h3>
+                            <p>Видео, обзоры и стримы по Standoff 2</p>
+                        </div>
+                    </a>
+
+                    <!-- Donation -->
+                    <a href="https://www.donationalerts.com/r/zeusikshop" class="contact-method" target="_blank">
+                        <div class="method-icon">❤️</div>
+                        <div class="method-content">
+                            <h3>Финансовая поддержка</h3>
+                            <p>DonationAlerts — поддержать проект материально</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <h3 style="color: var(--accent-green); margin-bottom: 16px;">📌 Важная информация</h3>
+                    <ul style="color: var(--text-secondary); padding-left: 20px; line-height: 1.7;">
+                        <li>По вопросам сотрудничества пишите в Telegram</li>
+                        <li>Для предложения материалов — ссылку в личные сообщения</li>
+                        <li>По техническим вопросам — опишите проблему подробно</li>
+                        <li>Время ответа: обычно в течение 24 часов</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Правая колонка - форма -->
+            <div class="contact-form-container">
+                <h2>Напишите мне</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Как с вами связаться? *</label>
+                        <input type="text" id="contact" name="contact" placeholder="Telegram, Email и т.д." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Тема сообщения *</label>
+                        <select id="topic" name="topic" required>
+                            <option value="">Выберите тему</option>
+                            <option value="materials">Предложить материалы в архив</option>
+                            <option value="bug">Сообщить об ошибке</option>
+                            <option value="suggestion">Предложение по улучшению</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="question">Вопрос по проекту</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" placeholder="Опишите подробно ваш вопрос или предложение..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Отправить сообщение</button>
+                </form>
+
+                <div class="form-notice">
+                    ⚠️ Форма работает в тестовом режиме. Рекомендуется дублировать важные 
+                    сообщения в Telegram (@Zeus1k1337)
+                </div>
+            </div>
+        </div>
+
+        <!-- Быстрые вопросы -->
+        <div class="quick-questions">
+            <h3>Частые вопросы</h3>
+            <div class="question-buttons">
+                <a href="faq.html#materials" class="question-btn">Как добавить материалы?</a>
+                <a href="faq.html#support" class="question-btn">Как поддержать проект?</a>
+                <a href="faq.html#legal" class="question-btn">Правовые вопросы</a>
+                <a href="forum.html" class="question-btn">Обсудить на форуме</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Archive Standoff 2 © 2025 | Фанатский некоммерческий проект<br>
+                Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD
+            </p>
+            <div class="footer-links">
+                <a href="faq.html" class="footer-link">FAQ</a>
+                <a href="contacts.html" class="footer-link">Контакты</a>
+                <a href="https://t.me/Zeus1k1337" class="footer-link" target="_blank">@Zeus1k1337</a>
+                <a href="https://www.donationalerts.com/r/zeusikshop" class="footer-link" target="_blank">Поддержать</a>
+                <a href="https://www.youtube.com/@Zeusoffc" class="footer-link" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Обработка формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                contact: document.getElementById('contact').value,
+                topic: document.getElementById('topic').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // В реальном проекте здесь был бы AJAX запрос к серверу
+            // Пока просто показываем уведомление
+            
+            alert('Сообщение отправлено! Я свяжусь с вами в ближайшее время. Для срочных вопросов пишите в Telegram: @Zeus1k1337');
+            
+            // Очистка формы
+            this.reset();
+            
+            // Сохраняем в localStorage для демонстрации
+            const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            submissions.push(formData);
+            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+        });
+
+        // Автозаполнение из localStorage (если есть сохранённые данные)
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('contactName');
+            const savedContact = localStorage.getItem('contactContact');
+            
+            if (savedName) {
+                document.getElementById('name').value = savedName;
+            }
+            if (savedContact) {
+                document.getElementById('contact').value = savedContact;
+            }
+            
+            // Сохраняем при вводе
+            document.getElementById('name').addEventListener('input', function() {
+                localStorage.setItem('contactName', this.value);
+            });
+            
+            document.getElementById('contact').addEventListener('input', function() {
+                localStorage.setItem('contactContact', this.value);
+            });
+        });
+    </script>
+</body>
+</html>
