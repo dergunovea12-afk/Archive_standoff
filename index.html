@@ -3,476 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive Standoff 2 - Фанатский архив</title>
+    <title>Zeus1k - Archive Standoff 2 | Фанатский архив</title>
     
-    <!-- ВСТРАИВАЕМ CSS НАПРЯМУЮ чтобы 100% работало -->
+    <meta name="description" content="Zeus1k (@Zeus1k1337) - архив материалов Standoff 2, проекты с исходным кодом, обзоры приваток на YouTube">
+    <meta name="keywords" content="standoff 2, zeus1k, архив, проекты, исходный код, приватки, обзоры">
+    
+    <link rel="stylesheet" href="styles/main.css">
     <style>
-        /* ВСЁ В ОДНОМ ФАЙЛЕ чтобы избежать проблем с путями */
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #111111;
-            --bg-tertiary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #888888;
-            --accent-blue: #0070f3;
-            --accent-purple: #7928ca;
-            --accent-green: #17c964;
-            --accent-red: #ff375f;
-            --border-color: #333333;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Навигация */
-        nav {
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--accent-blue);
-        }
-        
-        /* Герой секция */
+        /* Особые стили для главной */
         .hero {
-            text-align: center;
-            padding: 100px 0 60px;
-            background: linear-gradient(135deg, rgba(0, 112, 243, 0.1) 0%, rgba(121, 40, 202, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(0, 112, 243, 0.15) 0%, rgba(121, 40, 202, 0.15) 100%);
             border-radius: 24px;
+            padding: 80px 40px;
             margin: 40px 0;
+            text-align: center;
             border: 1px solid var(--border-color);
         }
         
-        .hero h1 {
-            font-size: 4rem;
-            background: linear-gradient(135deg, #0070f3, #7928ca);
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #0070f3, #7928ca, #ff375f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            background-clip: text;
         }
         
-        .tagline {
+        .hero-subtitle {
             font-size: 1.5rem;
             color: var(--text-secondary);
-            margin-bottom: 40px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
         }
         
-        /* Кнопки */
-        .btn {
-            display: inline-block;
-            background: var(--accent-blue);
+        .real-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        
+        .stat-real {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .stat-number-real {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        
+        .highlight-card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border: 2px solid var(--accent-orange);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            position: relative;
+        }
+        
+        .highlight-card:before {
+            content: '🔥 АКТУАЛЬНО';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--accent-orange);
             color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 10px;
-            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 112, 243, 0.3);
-        }
-        
-        .btn-primary {
-            background: var(--accent-blue);
-        }
-        
-        .btn-success {
-            background: var(--accent-green);
-        }
-        
-        .btn-donate {
-            background: var(--accent-red);
-        }
-        
-        /* Карточки */
-        .cards {
+        .projects-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 60px 0;
         }
         
-        .card {
+        .project-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-blue);
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            margin: 20px 0 15px;
-            color: var(--text-primary);
-        }
-        
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        /* Статистика */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
-        }
-        
-        .stat-item {
-            text-align: center;
             padding: 30px;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
         
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #0070f3, #7928ca);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .project-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+        
+        .project-badge {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+        
+        .rules-box {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--accent-blue);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        
+        .rules-box h3 {
+            color: var(--accent-blue);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .rules-list {
+            list-style: none;
+        }
+        
+        .rules-list li {
+            padding: 12px 0 12px 40px;
+            position: relative;
+            color: var(--text-secondary);
             margin-bottom: 10px;
         }
         
-        /* Футер */
-        footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 80px;
+        .rules-list li:before {
+            content: "📌";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
         
-        footer p {
-            color: var(--text-secondary);
-            margin: 10px 0;
-        }
-        
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Адаптивность */
         @media (max-width: 768px) {
-            .hero h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
             
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Навигация -->
-    <nav>
+    <nav class="main-nav">
         <div class="container">
             <ul class="nav-links">
-                <li><a href="index.html" class="active">🏠 Главная</a></li>
-                <li><a href="about.html">📖 О проекте</a></li>
-                <li><a href="faq.html">❓ FAQ</a></li>
-                <li><a href="contacts.html">📞 Контакты</a></li>
-                <li><a href="forum.html">💬 Форум</a></li>
-                <li><a href="https://t.me/archive_standoff2" target="_blank">📢 Telegram</a></li>
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="https://t.me/archive_standoff2">Telegram</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Главный контент -->
     <main class="container">
         <!-- Герой секция -->
         <section class="hero fade-in">
-            <h1>Archive Standoff 2</h1>
-            <p class="tagline">Фанатский архив материалов Standoff 2</p>
+            <h1 class="hero-title">Zeus1k - Archive Standoff 2</h1>
+            <p class="hero-subtitle">
+                Фанатский архив материалов Standoff 2 | Проекты с исходным кодом | 
+                Обзоры приваток на YouTube | Начало пути: 6 ноября 2025
+            </p>
             
-            <div class="buttons">
-                <a href="https://t.me/archive_standoff2" class="btn btn-primary" target="_blank">
-                    📢 Присоединиться в Telegram
+            <div class="btn-group">
+                <a href="https://t.me/Zeus1k1337" class="btn btn-primary" target="_blank">
+                    📱 @Zeus1k1337 в Telegram
                 </a>
-                <a href="about.html" class="btn">
-                    📖 Узнать больше
+                <a href="projects.html" class="btn btn-success">
+                    🚀 Мои проекты
                 </a>
-                <a href="#donate" class="btn btn-donate">
-                    ❤️ Поддержать проект
+                <a href="https://www.youtube.com/@Zeusoffc" class="btn btn-youtube" target="_blank">
+                    🎥 YouTube канал
                 </a>
             </div>
         </section>
 
-        <!-- Статистика -->
-        <div class="stats fade-in">
-            <div class="stat-item">
-                <div class="stat-number" id="materialsCount">500+</div>
+        <!-- Реальная статистика -->
+        <div class="real-stats fade-in">
+            <div class="stat-real">
+                <div class="stat-number-real">20+</div>
+                <div>Подписчиков в Telegram</div>
+            </div>
+            <div class="stat-real">
+                <div class="stat-number-real">50+</div>
                 <div>Материалов в архиве</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number" id="subscribersCount">1500+</div>
-                <div>Участников сообщества</div>
+            <div class="stat-real">
+                <div class="stat-number-real">1+</div>
+                <div>Проектов с исходным кодом</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div>Версий игры</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div>Доступ к архиву</div>
+            <div class="stat-real">
+                <div class="stat-number-real">24/7</div>
+                <div>Активность</div>
             </div>
         </div>
 
-        <!-- Возможности -->
-        <section class="fade-in">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">
-                Что предлагает архив?
+        <!-- Что я делаю -->
+        <section class="highlight-card fade-in">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--text-primary);">
+                🎯 Чем я занимаюсь
             </h2>
             
-            <div class="cards">
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">📁</div>
-                    <h3>Полный архив APK</h3>
-                    <p>Все версии Standoff 2 от самых ранних до текущих. С возможностью скачивания.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">📁 Архив материалов</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Собираю и сохраняю файлы из Standoff 2: текстуры, звуки, интерфейсы и другие ресурсы
+                    </p>
                 </div>
                 
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🎨</div>
-                    <h3>Текстуры и ресурсы</h3>
-                    <p>Удалённые скины, текстуры оружия, карт, интерфейсов в высоком качестве.</p>
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">💻 Проекты с исходным кодом</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Создаю проекты на основе Standoff 2 с открытым исходным кодом
+                    </p>
                 </div>
                 
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🔊</div>
-                    <h3>Звуки и музыка</h3>
-                    <p>Архив звуковых эффектов, музыки из разных версий игры.</p>
-                </div>
-                
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">📚</div>
-                    <h3>Документация</h3>
-                    <p>История изменений, патчноуты, информация о разработке игры.</p>
-                </div>
-                
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🤝</div>
-                    <h3>Активное сообщество</h3>
-                    <p>Telegram-чат, форум, взаимопомощь в поиске материалов.</p>
-                </div>
-                
-                <div class="card">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🔧</div>
-                    <h3>Инструменты</h3>
-                    <p>Утилиты для работы с файлами игры, конвертеры, просмотрщики.</p>
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">🎬 Обзоры приваток</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Делаю обзоры на приватные сервера Standoff 2 на YouTube канале
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Быстрый доступ -->
-        <section class="fade-in" style="background: var(--bg-secondary); padding: 60px; border-radius: 20px; margin: 80px 0; text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Быстрый доступ</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.2rem;">
-                Перейдите к нужному разделу или свяжитесь с создателем
-            </p>
-            
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="about.html" class="btn">📖 О проекте</a>
-                <a href="faq.html" class="btn">❓ FAQ</a>
-                <a href="forum.html" class="btn">💬 Форум</a>
-                <a href="contacts.html" class="btn">📞 Контакты</a>
-                <a href="https://t.me/Zeus1k1337" class="btn btn-success" target="_blank">👤 @Zeus1k1337</a>
+        <!-- Проекты на главной -->
+        <section class="fade-in">
+            <h2 class="section-title">🚀 Активные проекты</h2>
+            <div class="projects-showcase">
+                <div class="project-card">
+                    <span class="project-badge">🔥 НОВИНКА</span>
+                    <h3 class="project-title">StandKnife 1.1.5</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+                        Проект на основе Standoff 2 с онлайном. Полностью рабочий клиент с открытым исходным кодом.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="https://go.linkify.ru/2E5F" class="btn btn-success" target="_blank" style="padding: 10px 20px; font-size: 0.9rem;">
+                            🔗 Скачать
+                        </a>
+                        <a href="projects.html" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                            📖 Подробнее
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <span class="project-badge">📁 АРХИВ</span>
+                    <h3 class="project-title">Материалы Standoff 2</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+                        Коллекция из 50+ файлов из игры: текстуры, звуки, интерфейсы. Постоянно пополняется.
+                    </p>
+                    <a href="about.html#materials" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                        📂 Посмотреть архив
+                    </a>
+                </div>
             </div>
         </section>
+
+        <!-- Правила использования -->
+        <div class="rules-box fade-in">
+            <h3>📌 Правила использования материалов</h3>
+            <ul class="rules-list">
+                <li>Если вы используете мои материалы в своих проектах - упоминайте источник</li>
+                <li>Мои проекты с исходным кодом можно использовать и модифицировать</li>
+                <li>Запрещено выдавать мои материалы за свои без указания авторства</li>
+                <li>Коммерческое использование моих материалов - только с разрешения</li>
+                <li>Архив создан для образовательных и фанатских целей</li>
+            </ul>
+            <p style="text-align: center; margin-top: 25px; color: var(--text-secondary); font-style: italic;">
+                Уважайте чужой труд - я уважаю ваш
+            </p>
+        </div>
 
         <!-- Поддержка -->
-        <section id="donate" class="fade-in" style="background: linear-gradient(135deg, rgba(255, 55, 95, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%); padding: 60px; border-radius: 20px; margin: 80px 0; text-align: center; border: 1px solid var(--border-color);">
-            <div class="pulse" style="font-size: 4rem; margin-bottom: 30px;">❤️</div>
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Поддержите проект</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Archive Standoff 2 создаётся и поддерживается на энтузиазме. Ваша поддержка помогает развивать проект и добавлять новые материалы.
+        <section id="support" class="support fade-in">
+            <div class="support-icon pulse">💎</div>
+            <h2 class="support-title">Поддержите мой труд</h2>
+            <p class="support-description">
+                Я занимаюсь этим проектом с 6 ноября 2025 года. Все материалы и проекты делаю сам. 
+                Если вам нравится то, что я делаю - поддержите развитие проекта.
             </p>
-            
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <div class="support-buttons">
                 <a href="https://www.donationalerts.com/r/zeusikshop" class="btn btn-donate" target="_blank">
                     ❤️ DonationAlerts
                 </a>
-                <a href="https://www.youtube.com/@Zeusoffc" class="btn" style="background: #ff0000;" target="_blank">
-                    🎥 YouTube канал
+                <a href="https://www.youtube.com/@Zeusoffc" class="btn btn-youtube" target="_blank">
+                    🎥 YouTube
                 </a>
                 <a href="contacts.html" class="btn btn-success">
-                    ✉️ Предложить помощь
+                    🤝 Предложить сотрудничество
                 </a>
             </div>
         </section>
-
-        <!-- Легальное уведомление -->
-        <div class="fade-in" style="background: var(--bg-tertiary); padding: 40px; border-radius: 16px; margin: 60px 0; text-align: center; border: 1px solid var(--border-color);">
-            <h3 style="margin-bottom: 20px; color: var(--text-primary);">⚖️ Правовой статус</h3>
-            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                Все права на игровые материалы принадлежат компании <strong>AXLEBOLT LTD</strong>. 
-                Данный проект является некоммерческим фанатским архивом, созданным с целью сохранения 
-                истории игры Standoff 2.
-            </p>
-        </div>
     </main>
 
-    <!-- Футер -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>Archive Standoff 2 © 2025 | Фанатский некоммерческий проект</p>
-            <p>Standoff 2 является зарегистрированной торговой маркой AXLEBOLT LTD</p>
-            
-            <div style="margin-top: 30px;">
-                <a href="index.html" style="color: var(--text-secondary); margin: 0 15px; text-decoration: none;">Главная</a>
-                <a href="about.html" style="color: var(--text-secondary); margin: 0 15px; text-decoration: none;">О проекте</a>
-                <a href="contacts.html" style="color: var(--text-secondary); margin: 0 15px; text-decoration: none;">Контакты</a>
-                <a href="https://t.me/Zeus1k1337" style="color: var(--text-secondary); margin: 0 15px; text-decoration: none;" target="_blank">@Zeus1k1337</a>
+            <p class="footer-text">
+                Zeus1k (@Zeus1k1337) © 2025 | Archive Standoff 2<br>
+                Начало пути: 6 ноября 2025 | Фанатский некоммерческий проект
+            </p>
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="projects.html">Проекты</a>
+                <a href="https://t.me/Zeus1k1337" target="_blank">@Zeus1k1337</a>
+                <a href="https://www.youtube.com/@Zeusoffc" target="_blank">YouTube</a>
+                <a href="https://www.donationalerts.com/r/zeusikshop" target="_blank">Поддержать</a>
             </div>
         </div>
     </footer>
 
-    <!-- Скрипт прямо в HTML -->
-    <script>
-        // Анимация счетчиков
-        document.addEventListener('DOMContentLoaded', function() {
-            // Анимация материалов
-            const materialsElement = document.getElementById('materialsCount');
-            if (materialsElement) {
-                let materials = 500;
-                const materialsInterval = setInterval(() => {
-                    if (materials < 527) {
-                        materials += Math.floor(Math.random() * 3) + 1;
-                        materialsElement.textContent = materials + '+';
-                        materialsElement.classList.add('pulse');
-                        setTimeout(() => materialsElement.classList.remove('pulse'), 300);
-                    } else {
-                        clearInterval(materialsInterval);
-                    }
-                }, 100);
-            }
-            
-            // Анимация подписчиков
-            const subscribersElement = document.getElementById('subscribersCount');
-            if (subscribersElement) {
-                let subscribers = 1500;
-                const subscribersInterval = setInterval(() => {
-                    if (subscribers < 1524) {
-                        subscribers += Math.floor(Math.random() * 3) + 1;
-                        subscribersElement.textContent = subscribers + '+';
-                        subscribersElement.classList.add('pulse');
-                        setTimeout(() => subscribersElement.classList.remove('pulse'), 300);
-                    } else {
-                        clearInterval(subscribersInterval);
-                    }
-                }, 80);
-            }
-            
-            // Плавная прокрутка
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 100,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-            
-            // Анимация карточек при скролле
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.fade-in').forEach(el => {
-                el.style.opacity = "0";
-                el.style.transform = "translateY(20px)";
-                el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-                observer.observe(el);
-            });
-            
-            console.log('🎮 Archive Standoff 2 загружен!');
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

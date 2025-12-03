@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои проекты | Zeus1k - Archive Standoff 2</title>
+    <meta name="description" content="Мои проекты на основе Standoff 2: StandKnife 1.1.5 и другие. Исходный код, скачивание, информация">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .projects-container {
+            margin: 60px 0 100px;
+        }
+        
+        .project-main {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .project-main:before {
+            content: '⭐ ОСНОВНОЙ ПРОЕКТ';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .project-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+        
+        .project-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .project-version {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: var(--bg-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .tag.online {
+            background: rgba(23, 201, 100, 0.2);
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+        
+        .tag.open-source {
+            background: rgba(0, 112, 243, 0.2);
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+        
+        .project-features {
+            margin: 40px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .feature-item h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .download-section {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--accent-green), #13a452);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(23, 201, 100, 0.3);
+        }
+        
+        .instructions {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+        
+        .instructions ol {
+            padding-left: 25px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .instructions li {
+            margin-bottom: 15px;
+        }
+        
+        .future-projects {
+            background: linear-gradient(135deg, rgba(121, 40, 202, 0.1) 0%, rgba(0, 112, 243, 0.1) 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 80px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .project-main {
+                padding: 30px 20px;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-section,
+            .instructions {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="projects.html" class="active">Проекты</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="https://t.me/archive_standoff2">Telegram</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>🚀 Мои проекты</h1>
+            <p>Проекты на основе Standoff 2 с исходным кодом</p>
+        </div>
+
+        <div class="projects-container">
+            <!-- Основной проект -->
+            <section class="project-main fade-in">
+                <div class="project-header">
+                    <div class="project-icon">🔪</div>
+                    <div class="project-info">
+                        <h1>StandKnife</h1>
+                        <div class="project-version">Версия 1.1.5</div>
+                        <div class="project-tags">
+                            <span class="tag online">🌐 Онлайн</span>
+                            <span class="tag open-source">📖 Исходный код</span>
+                            <span class="tag">🎮 Standoff 2 Based</span>
+                            <span class="tag">🔥 Активно развивается</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-description">
+                    <h2>🎯 Описание проекта</h2>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 20px;">
+                        StandKnife - это проект на основе Standoff 2 с полностью рабочим онлайн-режимом. 
+                        Проект создан с нуля и включает в себя оригинальную механику игры с добавлением новых функций. 
+                        Исходный код открыт для изучения и модификации.
+                    </p>
+                </div>
+                
+                <div class="project-features">
+                    <h2>✨ Особенности</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h3>🌐 Онлайн-игра</h3>
+                            <p>Полностью рабочий онлайн с мультиплеером</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>📖 Открытый код</h3>
+                            <p>Исходный код доступен для изучения</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>🎮 Оригинальная механика</h3>
+                            <p>Сохраняет геймплей Standoff 2</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>🔧 Кастомизация</h3>
+                            <p>Возможность модификации и добавления функций</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-section fade-in">
+                    <h2>📥 Скачать StandKnife 1.1.5</h2>
+                    <p style="color: var(--text-secondary); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Нажмите кнопку ниже для скачивания последней версии проекта. 
+                        Архив включает клиент, исходный код и инструкцию по установке.
+                    </p>
+                    <a href="https://go.linkify.ru/2E5F" class="download-btn" target="_blank">
+                        <span>⬇️</span>
+                        <span>Скачать StandKnife 1.1.5</span>
+                    </a>
+                    <p style="margin-top: 20px; color: var(--text-tertiary); font-size: 0.9rem;">
+                        Размер: ~150 MB | Версия: 1.1.5 | Обновлено: Март 2025
+                    </p>
+                </div>
+                
+                <div class="instructions fade-in">
+                    <h2>📋 Инструкция по установке</h2>
+                    <ol>
+                        <li>Скачайте архив по ссылке выше</li>
+                        <li>Разархивируйте файлы в удобную папку</li>
+                        <li>Запустите файл <code>StandKnife.exe</code></li>
+                        <li>Следуйте инструкциям установщика</li>
+                        <li>После установки запустите игру через ярлык</li>
+                        <li>Для модификации откройте папку с исходным кодом</li>
+                    </ol>
+                    <p style="margin-top: 25px; color: var(--text-secondary); font-style: italic;">
+                        💡 Совет: Проект требует .NET Framework 4.8. Убедитесь, что он установлен на вашем ПК.
+                    </p>
+                </div>
+                
+                <div style="margin-top: 50px; padding: 30px; background: var(--bg-tertiary); border-radius: 12px;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 20px;">⚠️ Важная информация</h3>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+                        <li>Проект создан для образовательных целей</li>
+                        <li>Запрещено использование в коммерческих целях без разрешения</li>
+                        <li>При использовании кода в своих проектах указывайте авторство</li>
+                        <li>Техническая поддержка через Telegram: @Zeus1k1337</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Будущие проекты -->
+            <section class="future-projects fade-in">
+                <h2>🔮 Будущие проекты</h2>
+                <p style="color: var(--text-secondary); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    В разработке находятся новые проекты на основе Standoff 2. 
+                    Следите за обновлениями в Telegram-канале и на этой странице.
+                </p>
+                <div style="margin-top: 40px;">
+                    <div style="display: inline-block; background: var(--bg-secondary); padding: 20px 30px; border-radius: 12px; margin: 10px;">
+                        <h3 style="color: var(--accent-cyan);">Standoff 2 Tools</h3>
+                        <p style="color: var(--text-secondary); margin-top: 10px;">Набор инструментов для моддинга</p>
+                    </div>
+                    <div style="display: inline-block; background: var(--bg-secondary); padding: 20px 30px; border-radius: 12px; margin: 10px;">
+                        <h3 style="color: var(--accent-cyan);">Texture Pack Manager</h3>
+                        <p style="color: var(--text-secondary); margin-top: 10px;">Менеджер текстур для Standoff 2</p>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; color: var(--text-tertiary); font-style: italic;">
+                    Есть идеи для проектов? Напишите мне в Telegram: @Zeus1k1337
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Zeus1k (@Zeus1k1337) © 2025 | Проекты на основе Standoff 2<br>
+                Начало пути: 6 ноября 2025
+            </p>
+            <div class="footer-links">
+                <a href="projects.html">Проекты</a>
+                <a href="index.html">Главная</a>
+                <a href="https://t.me/Zeus1k1337" target="_blank">@Zeus1k1337</a>
+                <a href="https://go.linkify.ru/2E5F" target="_blank">Скачать StandKnife</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
