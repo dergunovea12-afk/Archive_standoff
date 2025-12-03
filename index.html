@@ -3,29 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои проекты | Zeus1k - Archive Standoff 2</title>
-    <meta name="description" content="Мои проекты на основе Standoff 2: StandKnife 1.1.5 - Unity 2019 проект с исходным кодом">
+    <title>Zeus1k - Archive Standoff 2 | Фанатский архив</title>
+    
+    <meta name="description" content="Zeus1k (@Zeus1k1337) - архив материалов Standoff 2, проекты с исходным кодом, обзоры приваток на YouTube">
+    <meta name="keywords" content="standoff 2, zeus1k, архив, проекты, исходный код, приватки, обзоры">
+    
     <link rel="stylesheet" href="styles/main.css">
     <style>
-        .projects-container {
-            margin: 60px 0 100px;
+        /* Особые стили для главной */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 112, 243, 0.15) 0%, rgba(121, 40, 202, 0.15) 100%);
+            border-radius: 24px;
+            padding: 80px 40px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
         }
         
-        .project-main {
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #0070f3, #7928ca, #ff375f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .real-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        
+        .stat-real {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .stat-number-real {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        
+        .highlight-card {
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            border: 2px solid var(--accent-green);
+            border: 2px solid var(--accent-orange);
             border-radius: 20px;
-            padding: 50px;
-            margin-bottom: 60px;
+            padding: 40px;
+            margin: 60px 0;
             position: relative;
         }
         
-        .project-main:before {
-            content: '🔥 Unity 2019 ПРОЕКТ';
+        .highlight-card:before {
+            content: '🔥 АКТУАЛЬНО';
             position: absolute;
             top: -15px;
             left: 30px;
-            background: var(--accent-green);
+            background: var(--accent-orange);
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
@@ -33,199 +83,96 @@
             font-weight: 600;
         }
         
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .project-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            flex-shrink: 0;
-        }
-        
-        .project-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-        
-        .project-version {
-            color: var(--accent-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: var(--bg-primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .tag.unity {
-            background: rgba(0, 112, 243, 0.2);
-            color: var(--accent-blue);
-            border-color: var(--accent-blue);
-        }
-        
-        .tag.open-source {
-            background: rgba(23, 201, 100, 0.2);
-            color: var(--accent-green);
-            border-color: var(--accent-green);
-        }
-        
-        .tag.online {
-            background: rgba(255, 107, 53, 0.2);
-            color: var(--accent-orange);
-            border-color: var(--accent-orange);
-        }
-        
-        .project-features {
-            margin: 40px 0;
-        }
-        
-        .features-grid {
+        .projects-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
         }
         
-        .feature-item {
-            background: var(--bg-primary);
+        .project-card {
+            background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        
-        .feature-item h3 {
-            color: var(--accent-cyan);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .feature-item p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .download-section {
-            background: var(--bg-tertiary);
             border-radius: 16px;
-            padding: 40px;
-            margin: 50px 0;
-            text-align: center;
-        }
-        
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: linear-gradient(135deg, var(--accent-green), #13a452);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 30px;
+            padding: 30px;
             transition: all 0.3s ease;
         }
         
-        .download-btn:hover {
+        .project-card:hover {
+            border-color: var(--accent-green);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(23, 201, 100, 0.3);
         }
         
-        .tech-info {
-            background: var(--bg-secondary);
+        .project-badge {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+        
+        .rules-box {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--accent-blue);
             border-radius: 16px;
             padding: 40px;
-            margin: 50px 0;
+            margin: 60px 0;
         }
         
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .tech-item {
-            text-align: center;
-            padding: 20px;
-            background: var(--bg-primary);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .tech-item h4 {
+        .rules-box h3 {
             color: var(--accent-blue);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .rules-list {
+            list-style: none;
+        }
+        
+        .rules-list li {
+            padding: 12px 0 12px 40px;
+            position: relative;
+            color: var(--text-secondary);
             margin-bottom: 10px;
         }
         
-        .coming-soon {
-            text-align: center;
-            padding: 80px 40px;
-        }
-        
-        .coming-soon h2 {
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-        
-        .coming-soon p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
+        .rules-list li:before {
+            content: "📌";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
         
         @media (max-width: 768px) {
-            .project-main {
-                padding: 30px 20px;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .project-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .features-grid, .tech-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .download-section, .tech-info {
-                padding: 30px 20px;
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Навигация -->
     <nav class="main-nav">
         <div class="container">
             <ul class="nav-links">
-                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html" class="active">Главная</a></li>
                 <li><a href="about.html">О проекте</a></li>
-                <li><a href="projects.html" class="active">Проекты</a></li>
+                <li><a href="projects.html">Проекты</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
                 <li><a href="https://t.me/archive_standoff2">Telegram</a></li>
@@ -234,162 +181,159 @@
     </nav>
 
     <main class="container">
-        <div class="page-header">
-            <h1>🚀 Мои проекты</h1>
+        <!-- Герой секция -->
+        <section class="hero fade-in">
+            <h1 class="hero-title">Zeus1k - Archive Standoff 2</h1>
+            <p class="hero-subtitle">
+                Фанатский архив материалов Standoff 2 | Проекты с исходным кодом | 
+                Обзоры приваток на YouTube | Начало пути: 6 ноября 2025
+            </p>
+            
+            <div class="btn-group">
+                <a href="https://t.me/Zeus1k1337" class="btn btn-primary" target="_blank">
+                    📱 @Zeus1k1337 в Telegram
+                </a>
+                <a href="projects.html" class="btn btn-success">
+                    🚀 Мои проекты
+                </a>
+                <a href="https://www.youtube.com/@Zeusoffc" class="btn btn-youtube" target="_blank">
+                    🎥 YouTube канал
+                </a>
+            </div>
+        </section>
+
+        <!-- Реальная статистика -->
+        <div class="real-stats fade-in">
+            <div class="stat-real">
+                <div class="stat-number-real">20+</div>
+                <div>Подписчиков в Telegram</div>
+            </div>
+            <div class="stat-real">
+                <div class="stat-number-real">50+</div>
+                <div>Материалов в архиве</div>
+            </div>
+            <div class="stat-real">
+                <div class="stat-number-real">1+</div>
+                <div>Проектов с исходным кодом</div>
+            </div>
+            <div class="stat-real">
+                <div class="stat-number-real">24/7</div>
+                <div>Активность</div>
+            </div>
         </div>
 
-        <div class="projects-container">
-            <!-- Основной проект -->
-            <section class="project-main fade-in">
-                <div class="project-header">
-                    <div class="project-icon">🔪</div>
-                    <div class="project-info">
-                        <h1>StandKnife</h1>
-                        <div class="project-version">Версия 1.1.5 | Unity 2019 Project</div>
-                        <div class="project-tags">
-                            <span class="tag unity">🎮 Unity 2019</span>
-                            <span class="tag open-source">📖 Исходный код</span>
-                            <span class="tag online">🌐 Сетевая игра</span>
-                            <span class="tag">🔪 Standoff 2 Based</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-description">
-                    <h2>🎯 Описание проекта</h2>
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 20px;">
-                        <strong>StandKnife</strong> - это проект на движке Unity 2019, созданный на основе механик Standoff 2. 
-                        Это не готовая игра, а проект с открытым исходным кодом для изучения и модификации. 
-                        Включает базовую механику стрельбы, передвижения и сетевой код.
-                    </p>
-                </div>
-                
-                <div class="project-features">
-                    <h2>✨ Особенности проекта</h2>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <h3>🎮 Unity 2019</h3>
-                            <p>Полный проект для Unity 2019.4 LTS</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>📖 Открытый код</h3>
-                            <p>Весь исходный код доступен для изучения</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>🌐 Сетевая игра</h3>
-                            <p>Базовая реализация мультиплеера</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>🔧 Кастомизация</h3>
-                            <p>Легко модифицировать и добавлять функции</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Техническая информация -->
-                <div class="tech-info fade-in">
-                    <h2>🛠️ Техническая информация</h2>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <h4>Движок</h4>
-                            <p>Unity 2019.4 LTS</p>
-                        </div>
-                        <div class="tech-item">
-                            <h4>Язык</h4>
-                            <p>C#</p>
-                        </div>
-                        <div class="tech-item">
-                            <h4>Платформа</h4>
-                            <p>Windows / Android</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Скачивание -->
-                <div class="download-section fade-in">
-                    <h2>📥 Скачать StandKnife 1.1.5</h2>
-                    <p style="color: var(--text-secondary); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Архив содержит полный проект Unity 2019. Откройте в Unity для изучения и модификации.
-                    </p>
-                    <a href="https://go.linkify.ru/2E5F" class="download-btn" target="_blank">
-                        <span>⬇️</span>
-                        <span>Скачать Unity проект</span>
-                    </a>
-                    <p style="margin-top: 20px; color: var(--text-tertiary); font-size: 0.9rem;">
-                        Размер: ~150 MB | Unity: 2019.4 LTS | Версия: 1.1.5
-                    </p>
-                </div>
-                
-                <!-- Как использовать -->
-                <div class="tech-info fade-in">
-                    <h2>🚀 Как использовать проект</h2>
-                    <div class="features-grid" style="margin-top: 30px;">
-                        <div class="feature-item">
-                            <h3>1. Установите Unity</h3>
-                            <p>Скачайте и установите Unity 2019.4 LTS</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>2. Откройте проект</h3>
-                            <p>В Unity Hub откройте скачанную папку</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>3. Изучайте код</h3>
-                            <p>Все скрипты находятся в Assets/Scripts/</p>
-                        </div>
-                        <div class="feature-item">
-                            <h3>4. Модифицируйте</h3>
-                            <p>Добавляйте свои функции и улучшения</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Важная информация -->
-                <div style="margin-top: 50px; padding: 30px; background: var(--bg-tertiary); border-radius: 12px;">
-                    <h3 style="color: var(--accent-blue); margin-bottom: 20px;">⚠️ Важная информация</h3>
-                    <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
-                        <li>Это <strong>Unity проект</strong>, а не готовая игра</li>
-                        <li>Требуется Unity 2019.4 LTS для открытия</li>
-                        <li>Проект создан для образовательных целей</li>
-                        <li>При использовании кода в своих проектах указывайте авторство</li>
-                        <li>Техническая поддержка через Telegram: @Zeus1k1337</li>
-                    </ul>
-                    <p style="margin-top: 25px; color: var(--text-secondary); font-style: italic;">
-                        🎯 <strong>Цель проекта:</strong> Показать как создавать подобные игры на Unity и дать готовую базу для изучения.
-                    </p>
-                </div>
-            </section>
+        <!-- Что я делаю -->
+        <section class="highlight-card fade-in">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--text-primary);">
+                🎯 Чем я занимаюсь
+            </h2>
             
-            <!-- Скоро новые проекты -->
-            <section class="coming-soon fade-in">
-                <div style="font-size: 4rem; margin-bottom: 30px;">🔄</div>
-                <h2>Новые проекты в разработке</h2>
-                <p>
-                    В данный момент я работаю над новыми проектами на Unity. 
-                    Следите за обновлениями в Telegram-канале или свяжитесь со мной для обсуждения идей.
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
-                    <a href="https://t.me/Zeus1k1337" class="btn btn-primary" target="_blank">
-                        💬 Предложить идею проекта
-                    </a>
-                    <a href="contacts.html" class="btn btn-success">
-                        🤝 Сотрудничество
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">📁 Архив материалов</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Собираю и сохраняю файлы из Standoff 2: текстуры, звуки, интерфейсы и другие ресурсы
+                    </p>
+                </div>
+                
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">💻 Проекты с исходным кодом</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Создаю проекты на основе Standoff 2 с открытым исходным кодом
+                    </p>
+                </div>
+                
+                <div style="background: var(--bg-tertiary); padding: 25px; border-radius: 12px;">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 15px;">🎬 Обзоры приваток</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Делаю обзоры на приватные сервера Standoff 2 на YouTube канале
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Проекты на главной -->
+        <section class="fade-in">
+            <h2 class="section-title">🚀 Активные проекты</h2>
+            <div class="projects-showcase">
+                <div class="project-card">
+                    <span class="project-badge">🔥 НОВИНКА</span>
+                    <h3 class="project-title">StandKnife 1.1.5</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+                        Проект на основе Standoff 2 с онлайном. Полностью рабочий клиент с открытым исходным кодом.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="https://go.linkify.ru/2E5F" class="btn btn-success" target="_blank" style="padding: 10px 20px; font-size: 0.9rem;">
+                            🔗 Скачать
+                        </a>
+                        <a href="projects.html" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                            📖 Подробнее
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <span class="project-badge">📁 АРХИВ</span>
+                    <h3 class="project-title">Материалы Standoff 2</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+                        Коллекция из 50+ файлов из игры: текстуры, звуки, интерфейсы. Постоянно пополняется.
+                    </p>
+                    <a href="about.html#materials" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                        📂 Посмотреть архив
                     </a>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <!-- Правила использования -->
+        <div class="rules-box fade-in">
+            <h3>📌 Правила использования материалов</h3>
+            <ul class="rules-list">
+                <li>Если вы используете мои материалы в своих проектах - упоминайте источник</li>
+                <li>Мои проекты с исходным кодом можно использовать и модифицировать</li>
+                <li>Запрещено выдавать мои материалы за свои без указания авторства</li>
+                <li>Коммерческое использование моих материалов - только с разрешения</li>
+                <li>Архив создан для образовательных и фанатских целей</li>
+            </ul>
+            <p style="text-align: center; margin-top: 25px; color: var(--text-secondary); font-style: italic;">
+                Уважайте чужой труд - я уважаю ваш
+            </p>
         </div>
+
+        <!-- Поддержка -->
+        <section id="support" class="support fade-in">
+            <div class="support-icon pulse">💎</div>
+            <h2 class="support-title">Поддержите мой труд</h2>
+            <p class="support-description">
+                Я занимаюсь этим проектом с 6 ноября 2025 года. Все материалы и проекты делаю сам. 
+                Если вам нравится то, что я делаю - поддержите развитие проекта.
+            </p>
+            <div class="support-buttons">
+                <a href="https://www.donationalerts.com/r/zeusikshop" class="btn btn-donate" target="_blank">
+                    ❤️ DonationAlerts
+                </a>
+                <a href="https://www.youtube.com/@Zeusoffc" class="btn btn-youtube" target="_blank">
+                    🎥 YouTube
+                </a>
+                <a href="contacts.html" class="btn btn-success">
+                    🤝 Предложить сотрудничество
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="container">
             <p class="footer-text">
-                Zeus1k (@Zeus1k1337) © 2025 | Unity проекты на основе Standoff 2<br>
-                Начало пути: 6 ноября 2025 | StandKnife 1.1.5 - Unity 2019 Project
+                Zeus1k (@Zeus1k1337) © 2025 | Archive Standoff 2<br>
+                Начало пути: 6 ноября 2025 | Фанатский некоммерческий проект
             </p>
             <div class="footer-links">
-                <a href="projects.html">Проекты</a>
                 <a href="index.html">Главная</a>
+                <a href="projects.html">Проекты</a>
                 <a href="https://t.me/Zeus1k1337" target="_blank">@Zeus1k1337</a>
-                <a href="https://go.linkify.ru/2E5F" target="_blank">Скачать StandKnife</a>
+                <a href="https://www.youtube.com/@Zeusoffc" target="_blank">YouTube</a>
+                <a href="https://www.donationalerts.com/r/zeusikshop" target="_blank">Поддержать</a>
             </div>
         </div>
     </footer>
